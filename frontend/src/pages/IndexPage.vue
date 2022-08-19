@@ -9,12 +9,12 @@
       <template v-slot:top>
         <span class="text-h5">Produtos</span>
         <q-space></q-space>
-        <q-btn color="primary" size="md" label="Adicionar" :to="{ name: 'FormPost' }" />
+        <q-btn class="bg-cyan-8" color="white" size="md" label="Adicionar" :to="{ name: 'FormPost' }" />
       </template>
       <template v-slot:body-cell-actions="props">
         <q-td :props="props" class="q-gutter-sm">
-          <q-btn icon="edit" dense size="md" @click="editProduto(props.row.id)"></q-btn>
-          <q-btn icon="delete" dense size="md" @click="deleteProduto(props.row.id)"></q-btn>
+          <q-btn class="bg-cyan-8" color="white" icon="edit" dense size="md" @click="editProduto(props.row.id)"></q-btn>
+          <q-btn class="bg-cyan-8" color="white" icon="delete" dense size="md" @click="deleteProduto(props.row.id)"></q-btn>
         </q-td>
       </template>
     </q-table>
@@ -38,7 +38,8 @@ export default defineComponent({
     const columns = [
       { name: 'id', field: 'id', label: 'ID', sortable: true, align: 'left' },
       { name: 'nome', field: 'nome', label: 'Nome', sortable: true, align: 'left' },
-      { name: 'ativo', field: 'ativo', label: 'Ativo', sortable: true, align: 'left' },
+      { name: 'quantidade', field: 'quantidade', label: 'Quantidade', sortable: true, align: 'left' },
+      { name: 'preco', field: 'preco', label: 'Preço', sortable: true, align: 'left' },
       { name: 'data', field: 'data', label: 'Data', sortable: true, align: 'left' },
       { name: 'actions', field: 'actions', label: 'Ações', align: 'right' }
     ]

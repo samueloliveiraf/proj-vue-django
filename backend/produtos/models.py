@@ -3,6 +3,8 @@ from django.db import models
 
 class Produto(models.Model):
     nome = models.CharField(max_length=1024, blank=True, null=True)
+    quantidade = models.IntegerField(default=0, blank=True, null=True)
+    preco = models.PositiveIntegerField()
     ativo = models.BooleanField(default=True)
     data = models.DateField(auto_now=True)
 

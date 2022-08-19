@@ -6,17 +6,32 @@
             @submit="onSubmit"
             class="row"
             >
-            <q-input
+            <div class="col-12 q-gutter-sm">
+              <q-input
                 filled
                 v-model="form.nome"
                 label="Nome *"
-                class="col-lg-6 col-xs-12"
                 lazy-rules
                 :rules="[ val => val && val.length > 0 || 'Campo obrigatorio']"
-            />
+              />
+              <q-input
+                filled
+                v-model="form.quantidade"
+                label="Quantidade *"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Campo obrigatorio']"
+              />
+              <q-input
+                filled
+                v-model="form.preco"
+                label="Preço *"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Campo obrigatorio']"
+              />
+            </div>
             <div class="col-12 q-gutter-sm">
-                <q-btn class="float-right" text-color="primary" label="Cancelar" :to="{ name: 'home' }" />
-                <q-btn class="float-right" label="Salvar" color="primary" type="submit" />
+              <q-btn class="bg-cyan-8 float-right" text-color="white" label="Cancelar" :to="{ name: 'home' }" />
+              <q-btn class="bg-cyan-8 float-right" label="Salvar" text-color="white" type="submit" />
             </div>
             </q-form>
         </q-card-section>
@@ -38,7 +53,9 @@ export default defineComponent({
     const router = useRouter()
     const route = useRoute()
     const form = ref({
-      nome: ''
+      nome: '',
+      quantidade: 0,
+      preco: 0
     })
 
     onMounted(async () => {
