@@ -1,8 +1,8 @@
 import { api } from 'boot/axios'
 
-export default function useApi () {
+export default function useApiProduto () {
   const tokenKEY = 'YWRtaW46MDEwMjAzc2E='
-  const urlBase = '/produtos/api/'
+  const urlBase = '/api/produtos/'
 
   const list = async () => {
     try {

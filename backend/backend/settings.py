@@ -32,7 +32,8 @@ THIRD_APPS = [
 ]
 
 PROJECT_APPS = [
-    'produtos.apps.ProdutosConfig'
+    'produtos.apps.ProdutosConfig',
+    'funcionarios.apps.FuncionariosConfig'
 ]
 
 INSTALLED_APPS = PROJECT_APPS + THIRD_APPS + DEFAULT_APPS

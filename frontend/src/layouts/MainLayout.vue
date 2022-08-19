@@ -23,7 +23,7 @@
       >
       <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
         <q-list padding>
-          <q-item active clickable v-ripple :to="{ name: 'home' }">
+          <q-item clickable v-ripple :to="{ name: 'home' }">
             <q-item-section avatar>
               <q-icon name="home" />
             </q-item-section>
@@ -33,35 +33,26 @@
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple :to="{ name: 'produtos' }">
             <q-item-section avatar>
-              <q-icon name="star" />
+              <q-icon name="dns" />
             </q-item-section>
 
             <q-item-section>
-              Star
+              Produtos
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple :to="{ name: 'funcionarios' }">
             <q-item-section avatar>
-              <q-icon name="send" />
+              <q-icon name="group" />
             </q-item-section>
 
             <q-item-section>
-              Send
+              Funcionarios
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="drafts" />
-            </q-item-section>
-
-            <q-item-section>
-              Drafts
-            </q-item-section>
-          </q-item>
         </q-list>
       </q-scroll-area>
 
@@ -84,7 +75,6 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
-// import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {

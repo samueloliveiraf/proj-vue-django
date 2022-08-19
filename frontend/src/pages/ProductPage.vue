@@ -9,12 +9,12 @@
       <template v-slot:top>
         <span class="text-h5">Produtos</span>
         <q-space></q-space>
-        <q-btn class="bg-cyan-8" color="white" size="md" label="Adicionar" :to="{ name: 'FormPost' }" />
+        <q-btn push class="bg-cyan-8" color="white" size="md" dense icon="add_box" :to="{ name: 'formProduto' }" />
       </template>
       <template v-slot:body-cell-actions="props">
         <q-td :props="props" class="q-gutter-sm">
-          <q-btn class="bg-cyan-8" color="white" icon="edit" dense size="md" @click="editProduto(props.row.id)"></q-btn>
-          <q-btn class="bg-cyan-8" color="white" icon="delete" dense size="md" @click="deleteProduto(props.row.id)"></q-btn>
+          <q-btn push class="bg-cyan-8" color="white" icon="edit" dense size="md" @click="editProduto(props.row.id)"></q-btn>
+          <q-btn push class="bg-cyan-8" color="white" icon="delete" dense size="md" @click="deleteProduto(props.row.id)"></q-btn>
         </q-td>
       </template>
     </q-table>
@@ -23,7 +23,7 @@
 
 <script>
 import { defineComponent, ref, onMounted } from 'vue'
-import useApi from 'src/composables/UseApi'
+import useApiProduto from 'src/composables/UseApiProdutos'
 import { useQuasar } from 'quasar'
 import { useRouter } from 'vue-router'
 
@@ -31,7 +31,7 @@ export default defineComponent({
   name: 'IndexPage',
   setup () {
     const produtos = ref([])
-    const { list, remove } = useApi()
+    const { list, remove } = useApiProduto()
     const $q = useQuasar()
     const router = useRouter()
 
@@ -70,12 +70,12 @@ export default defineComponent({
           await getProdutos()
         })
       } catch (error) {
-        $q.notify({ message: 'Error ao deletar', icon: 'times', color: 'negative' })
+        $q.notify({ message: 'Error ao deletar', icon: 'cancel', color: 'negative' })
       }
     }
 
     const editProduto = (id) => {
-      router.push({ name: 'FormPost', params: { id } })
+      router.push({ name: 'formProduto', params: { id } })
     }
 
     return {

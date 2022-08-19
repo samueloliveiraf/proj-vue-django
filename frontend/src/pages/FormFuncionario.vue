@@ -16,22 +16,22 @@
               />
               <q-input
                 filled
-                v-model="form.quantidade"
-                label="Quantidade *"
+                v-model="form.cargo"
+                label="Cargo *"
                 lazy-rules
                 :rules="[ val => val && val.length > 0 || 'Campo obrigatorio']"
               />
               <q-input
                 filled
-                v-model="form.preco"
-                label="Preço *"
+                v-model="form.idade"
+                label="Idade *"
                 lazy-rules
                 :rules="[ val => val && val.length > 0 || 'Campo obrigatorio']"
               />
             </div>
             <div class="col-12 q-gutter-sm">
-              <q-btn class="bg-cyan-8 float-right" text-color="white" label="Cancelar" :to="{ name: 'home' }" />
-              <q-btn class="bg-cyan-8 float-right" label="Salvar" text-color="white" type="submit" />
+              <q-btn push class="bg-cyan-8 float-right" dense size="md" text-color="white" icon="cancel" :to="{ name: 'funcionarios' }" />
+              <q-btn push class="bg-cyan-8 float-right" dense size="md" icon="save" text-color="white" type="submit" />
             </div>
             </q-form>
         </q-card-section>
@@ -41,30 +41,30 @@
 
 <script>
 import { defineComponent, ref, onMounted } from 'vue'
-import useApi from 'src/composables/UseApi'
+import useApiFuncionario from 'src/composables/UserApiFuncionarios'
 import { useQuasar } from 'quasar'
 import { useRouter, useRoute } from 'vue-router'
 
 export default defineComponent({
-  name: 'FormPost',
+  name: 'FormFuncionario',
   setup () {
     const $q = useQuasar()
-    const { post, getById, put } = useApi()
+    const { post, getById, put } = useApiFuncionario()
     const router = useRouter()
     const route = useRoute()
     const form = ref({
       nome: '',
-      quantidade: 0,
-      preco: 0
+      cargo: '',
+      idade: 0
     })
 
     onMounted(async () => {
       if (route.params.id) {
-        getPost(route.params.id)
+        getFuncionario(route.params.id)
       }
     })
 
-    const getPost = async (id) => {
+    const getFuncionario = async (id) => {
       try {
         const response = await getById(route.params.id)
         form.value = response
@@ -81,9 +81,9 @@ export default defineComponent({
           await post(form.value)
         }
         $q.notify({ message: 'Salvo com sucesso!', icon: 'check', color: 'positive' })
-        router.push({ name: 'home' })
+        router.push({ name: 'funcionarios' })
       } catch (error) {
-        alert(error)
+        $q.notify({ message: 'Error ao Salvar', icon: 'cancel', color: 'negative' })
       }
     }
 
