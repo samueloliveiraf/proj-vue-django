@@ -16,6 +16,7 @@
               />
               <q-input
                 filled
+                type="number"
                 v-model="form.quantidade"
                 label="Quantidade *"
                 lazy-rules
@@ -23,6 +24,7 @@
               />
               <q-input
                 filled
+                type="number"
                 v-model="form.preco"
                 label="Preço *"
                 lazy-rules

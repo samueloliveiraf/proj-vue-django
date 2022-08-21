@@ -62,7 +62,8 @@ module.exports = configure(function (ctx) {
       env: {
         API_URL: ctx.dev
           ? 'http://localhost:8000'
-          : 'https://prod.api.com'
+          : 'https://prod.api.com',
+        env_dev: require('dotenv').config().parsed
       }
       // available values: 'hash', 'history'
       // vueRouterBase,

@@ -23,6 +23,7 @@
               />
               <q-input
                 filled
+                type="number"
                 v-model="form.idade"
                 label="Idade *"
                 lazy-rules

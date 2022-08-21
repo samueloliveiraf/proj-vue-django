@@ -1,7 +1,7 @@
 import { api } from 'boot/axios'
 
 export default function useApiFuncionario () {
-  const tokenKEY = 'YWRtaW46MDEwMjAzc2E='
+  const tokenKEY = process.env.env_dev.VUE_APP_TOKEN_KEY
   const urlBase = '/api/funcionarios/'
 
   const list = async () => {

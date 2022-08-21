@@ -17,6 +17,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=config_pretty.list)
 
 # Application definition
 
+AUTH_USER_MODEL = 'usuarios.Usuario'
+
 DEFAULT_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,7 +35,8 @@ THIRD_APPS = [
 
 PROJECT_APPS = [
     'produtos.apps.ProdutosConfig',
-    'funcionarios.apps.FuncionariosConfig'
+    'funcionarios.apps.FuncionariosConfig',
+    'usuarios.apps.UsuariosConfig'
 ]
 
 INSTALLED_APPS = PROJECT_APPS + THIRD_APPS + DEFAULT_APPS
@@ -105,7 +108,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
     ],
 }
 
